@@ -1,6 +1,12 @@
 default:
     just --list
 
+init:
+    git submodule update --recursive --init
+
+compile:
+    make ferris/sweep:almost_default
+
 flash target:
     mkdir -p mnt
     sudo mount -o uid=`whoami` /dev/{{target}} mnt
